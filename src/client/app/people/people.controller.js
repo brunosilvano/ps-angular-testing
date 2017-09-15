@@ -9,7 +9,17 @@
     /* @ngInject */
     function PeopleController($q, dataservice, logger) {
         var vm = this;
-        
+
+        getPeople();
+
+        ////////////////
+
+        function getPeople () {
+            dataservice.getPeople()
+            .then(function (people) {
+                vm.people = people;
+                logger.success('got some people');
+            });
+        }
     }
   })();
-  
